@@ -2,38 +2,39 @@
 <html>
 <head>
     <title>Etch-a-sketch</title>
-</head>
-<style>* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: rgb(219, 219, 219);
-    overflow: hidden;
-}
-
-.container {
-    background-color: white;
-    margin: 30px;
-    width: 600px;
-    height: 600px;
-    box-shadow: black 10px 10px;
-    display:flex;
-    flex-wrap: wrap;
-}
-
-.container > div {
-    content: '';
-    background-color: white;
-    margin: 0;
+    <style>* {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background-color: rgb(219, 219, 219);
+        overflow: hidden;
+    }
     
-}
+    .container {
+        background-color: white;
+        margin: 30px;
+        width: 600px;
+        height: 600px;
+        box-shadow: black 10px 10px;
+        display:flex;
+        flex-wrap: wrap;
+    }
+    
+    .container > div {
+        content: '';
+        background-color: white;
+        margin: 0;
+        
+    }
+    
+    .footer {
+        display:flex;
+        justify-content: space-between;
+        position: fixed;
+        bottom: 50px;
+    }</style>
+</head>
 
-.footer {
-    display:flex;
-    justify-content: space-between;
-    position: fixed;
-    bottom: 50px;
-}</style>
 <body>
     <div class="container"></div>
     <div class="footer">

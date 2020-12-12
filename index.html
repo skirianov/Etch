@@ -2,7 +2,57 @@
 <html>
 <head>
     <title>Etch-a-sketch</title>
-    <link rel="stylesheet" href="main.css">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: rgb(219, 219, 219);
+    overflow: hidden;
+}
+
+.container {
+    background-color: white;
+    margin: 30px;
+    width: 600px;
+    height: 600px;
+    box-shadow: black 10px 10px;
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.container > div {
+    content: '';
+    background-color: white;
+    margin: 0;
+    
+}
+
+
+.settings {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 30px;
+    padding-right: 50px;
+
+}
+
+.clear {
+    width: 80px;
+    height: 40px;
+}
+
+.color {
+    width: 100px;
+}
+
+.rainbow {
+    content: '';
+    width: 50px;
+    height: 50px;
+}
+    </style>
 </head>
 
 <body>
@@ -70,6 +120,83 @@
         </div>
     </div>
 
-<script src="app.js"></script>
+<script>
+    const container = document.querySelector('.container');
+
+let height = container.offsetHeight;
+let width = container.offsetWidth;
+
+let div = document.createElement('div');
+const colorPicker = document.querySelector('.color');
+let color = 'red';
+colorPicker.addEventListener('input',() => {
+    color = colorPicker.value;
+    
+})
+
+// first document onload event
+document.addEventListener('load',onload());
+function onload(){ 
+    for (let i = 0; i < 10000; i++){
+     addDivs(65);
+    };
+    divs = Array.from(document.getElementsByClassName('div'));
+    divs.forEach((each)=> {
+        each.addEventListener('mouseover',() => {
+            each.style.backgroundColor =  color;
+        })});
+}
+
+function addDivs(n){ //general add div
+        div = document.createElement('div');
+        div.style.height = height / n + "px";
+        div.style.width = width / n + 'px';
+        div.className = "div";
+        div.innerText = '';
+        container.appendChild(div);
+}
+
+const size = document.querySelector('.range');
+const clear = document.querySelector('.clear');
+const rainbow = document.querySelector('.rainbow');
+
+// Filling container function
+const fillContainer = () => {
+    container.innerHTML = '';
+    for (let i = 0; i < size.value * size.value; i++){
+        addDivs(size.value);
+    }
+    divs = Array.from(document.getElementsByClassName('div'));
+    divs.forEach((each)=> {
+        each.addEventListener('mouseover',() => {
+            each.style.backgroundColor =  color;
+        })});
+}
+
+// clear button and size change refresh
+clear.addEventListener('click',() => {fillContainer()});
+size.addEventListener('input',()=>{fillContainer()});
+let random = () => {return Math.floor(Math.random() * 255)};
+rainbow.addEventListener('click',() => {
+    divs = Array.from(document.getElementsByClassName('div'));
+    divs.forEach((each)=> {
+        each.addEventListener('mouseover',() => {
+            color = "rgb(" + random() + "," + random() + "," + random() + ")";
+            each.style.backgroundColor =  color;
+        })});
+})
+
+
+
+function paintingDivs(){
+    divs = Array.from(document.getElementsByClassName('div'));
+    divs.forEach((each)=> {
+        each.addEventListener('mouseover',() => {
+            each.style.backgroundColor =  color;
+    })});
+}
+
+
+</script>
 </body>
 </html>

@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: rgb(219, 219, 219);
+    overflow: hidden;
+}
+
+.container {
+    background-color: white;
+    margin: 30px;
+    width: 600px;
+    height: 600px;
+    box-shadow: black 10px 10px;
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.container > div {
+    content: '';
+    
+}

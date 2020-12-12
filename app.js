@@ -4,6 +4,13 @@ let height = container.offsetHeight;
 let width = container.offsetWidth;
 
 let div = document.createElement('div');
+const colorPicker = document.querySelector('.color');
+let color = 'red';
+colorPicker.addEventListener('input',() => {
+  
+    color = colorPicker.value;
+    
+})
 
 document.addEventListener('load',onload());
 function onload(){ 
@@ -13,10 +20,8 @@ function onload(){
     divs = Array.from(document.getElementsByClassName('div'));
     divs.forEach((each)=> {
         each.addEventListener('mouseover',() => {
-            each.style.backgroundColor = "red"})});
+            each.style.backgroundColor = color})});
 }
-
-
 
 function addDivs(n){
         div = document.createElement('div');
@@ -28,15 +33,19 @@ function addDivs(n){
 }
 
 
-const fillContainer = (n) => {
+
+const size = document.querySelector('input').value;
+
+
+const fillContainer = () => {
     container.innerHTML = '';
-    for (let i = 0; i < n*n; i++){
-        addDivs(n);
+    for (let i = 0; i < size * size; i++){
+        addDivs(size);
     }
     divs = Array.from(document.getElementsByClassName('div'));
     divs.forEach((each)=> {
         each.addEventListener('mouseover',() => {
-            each.style.backgroundColor = "red"})})
+            each.style.backgroundColor = color})})
 }
 
 
